@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importa Link
+import { Link } from 'react-router-dom'; 
 import compumundo from "../../images/compumundo.jpg";
 
 export const Header = () => {
@@ -12,10 +12,10 @@ export const Header = () => {
       </Link>
       <ul>
         <li>
-          <Link to="/">INICIO</Link> {/* Utiliza Link para redirigir a Inicio */}
+          <Link to="/">INICIO</Link> 
         </li>
         <li>
-          <Link to="/productos">PRODUCTOS</Link> {/* Utiliza Link para redirigir a Productos */}
+          <Link to="/productos">PRODUCTOS</Link> 
         </li>
       </ul>
       <div className="cart">

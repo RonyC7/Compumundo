@@ -203,16 +203,17 @@ header .cart span {
 .imagen-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
   height: 80vh;
   overflow: hidden;
 }
 
 .imagen-portada {
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
+  max-width: none;
+  width: auto;
+  height: 100%;
 }
+
 
 @media screen and (max-width: 600px) {
   header ul {
