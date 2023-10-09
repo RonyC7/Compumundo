@@ -1,18 +1,17 @@
 * {
   margin: 0;
-  padding: 0%;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-.App{
+
+.App {
   max-width: 1550px;
   width: 100%;
   min-height: 100vh;
@@ -20,9 +19,10 @@ code {
   box-shadow: 0 5px 6px #08a05ca4;
   padding: 0 15px;
   box-sizing: border-box;
+  background-color: white; /* Cambio de color de fondo a hueso */
 }
 
-header{
+header {
   width: 97%;
   min-height: 100px;
   max-width: 1530px;
@@ -36,33 +36,41 @@ header{
   background-color: white;
   box-shadow: 0 5px 10px #01f82250;
 }
-a{
+
+a {
   color: black;
   text-decoration: none;
   text-transform: uppercase;
 }
-a:hover{
+
+a:hover {
   color: #08a010;
 }
-li{
+
+li {
   list-style: none;
 }
-header ul{
+
+header ul {
   display: flex;
   padding: 0;
   margin: 0;
 }
-header ul li{
+
+header ul li {
   padding: 0 1rem;
 }
-header ul li a{
+
+header ul li a {
   font-weight: bold;
 }
-header .cart box-icon{
+
+header .cart box-icon {
   width: 45px;
   height: 45px;
 }
-header .cart span{
+
+header .cart span {
   position: absolute;
   top: 1rem;
   right: 8rem;
@@ -79,13 +87,13 @@ header .cart span{
   background-color: rgb(181, 31, 61);
 }
 
-.title{
+.title {
   font-size: 2rem;
   padding: 10rem 0 0 0;
   color: #08a05c;
 }
 
-.productos{
+.productos {
   padding: 5rem 1rem;
   margin: 0 auto;
   display: grid;
@@ -93,7 +101,8 @@ header .cart span{
   gap: 3rem 2rem;
   box-sizing: border-box;
 }
-.producto{
+
+.producto {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -103,79 +112,90 @@ header .cart span{
   border-radius: 5px;
 }
 
-.producto:hover{
+.producto:hover {
   border: 6px solid #08a05c55;
 }
 
-.producto__img img{
-  width: 310px;
+.producto__img img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
 }
 
-.producto__footer h1{
+.producto__footer h1 {
   font-weight: 600;
   font-size: 1.5rem;
   color: #1a202c;
   font-family: Helvetica, sans-serif;
 }
 
-.producto__footer p{
+.producto__footer p {
   font-weight: 700;
   color: rgba(0, 0, 0, .555);
   text-transform: uppercase;
   font-size: 18px;
 }
 
-.producto__footer .price{
+.producto__footer .price {
   font-size: 2rem;
   color: #1a202c;
 }
 
-.producto .buttom{
+.buttom {
   width: 100%;
   height: 45px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0 1rem;
   margin: 1rem;
 }
 
-.buttom .btn{
+.buttom .btn {
   border: none;
   outline: 0;
   cursor: pointer;
-  border-radius: 5px;
-}
-
-.buttom button{
-  background-color: #3033d3;
+  border-radius: 20px;
+  background-color: #6be2fa; 
   max-width: 250px;
   width: 100%;
   font-size: 1.5rem;
   color: white;
   font-weight: 600;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
 }
 
-.buttom div{
-  background-color: #08a05c;
-  display: grid;
-  align-items: center;
-  text-align: center;
-  margin-left: -2rem;
-  border-radius: 5px;
+.buttom .btn:hover {
+  background-color: #b2de13; 
 }
 
-.buttom div a{
+.buttom .btn-vista {
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: #0fda7e;
+  max-width: 250px;
+  width: 100%;
+  font-size: 1.5rem;
   color: white;
-  font-weight: 700;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
 }
 
-.buttom div a:hover{
-  color: white;
+.buttom .btn-vista:hover {
+  background-color: #e88c0c;
 }
 
-@media only screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
   header ul {
     display: none;
   }
-} 
+  header .cart span {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+  }
+}
