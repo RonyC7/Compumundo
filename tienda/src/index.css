@@ -189,6 +189,31 @@ header .cart span {
   background-color: #e88c0c;
 }
 
+.inicio{
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 9rem;
+}
+
+.inicio h1{
+  font-size: 2rem;
+  color: #08a05c;
+}
+
+.imagen-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.imagen-portada {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 @media screen and (max-width: 600px) {
   header ul {
     display: none;
