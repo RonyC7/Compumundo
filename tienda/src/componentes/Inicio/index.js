@@ -7,13 +7,13 @@ export const Inicio = () => {
   return (
     <div className="inicio">
       <Link to="/">
-        <h1>Inicio</h1>
+        <h1></h1>
         <div className="imagen-container">
           <img src={Portada} alt="inicio" className="imagen-portada" />
         </div>
-      </Link>
-      <Link to="/productos">
-        <h1>Productos</h1>
+      </Link> 
+      <Link to="/productos">  
+        <h1></h1>
       </Link>   
     </div>
   );
