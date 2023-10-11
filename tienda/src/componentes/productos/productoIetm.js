@@ -1,4 +1,3 @@
-// productoIetm.js
 
 export const productoIetm = [
     {

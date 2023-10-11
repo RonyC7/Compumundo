@@ -5,6 +5,7 @@ import { Inicio } from "./componentes/Inicio";
 import { ProductosLista } from "./componentes/productos/index";
 import 'boxicons';
 import { DataProvider } from "./context/Dataprovider";
+import { Carrito } from "./componentes/Carrito";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
+        <Carrito />
         <Routes> 
           <Route path="/" element={<Inicio />} /> 
           <Route path="/productos" element={<ProductosLista />} />
