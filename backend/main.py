@@ -5,6 +5,7 @@ from PIL import Image
 from io import BytesIO
 import os
 from flask_cors import CORS 
+import datetime
 
 
 app = Flask(__name__)
@@ -31,17 +32,30 @@ def guardar_imagen_desde_base64(base64_string, ruta_destino):
 
 
 @app.route('/carrito', methods=['GET', 'POST'])
-def manejar_carrito():
-    if request.mathod == 'GET':
+@app.route('/carrito/<id>', methods=['PUT', 'DELETE'])
+def manejar_carrito(id=None):
+    if request.method == 'GET':
         # request.remote_addr
-        return jsonify([c for c in carritos if c['remote_addr'] == request.remote_addr][0])
+        return jsonify([c for c in carritos if c['remote_addr'] == request.remote_addr])
     elif request.method == 'POST':
         carritos.append({
             'remote_addr': request.remote_addr,
-            'id': request.get_json()['productid'],
-            'cantidad': 'a'
+            'id': request.get_json()['id'],
+            'cantidad': request.get_json()['cantidad']
         })
         return jsonify({'message': 'ok'})
+    elif request.method == 'PUT':
+        for i in range(len(carritos)):
+            if carritos[i]['id'] == request.id and carritos[i]['remote_addr'] == request.remote_addr:
+                carritos[i]['cantidad'] = request.get_json()['cantidad']
+        return jsonify({'message': 'ok'})
+    elif request.method == 'DELETE':
+        pos = [i for i in range(len(carritos)) if carritos[i]['id'] == request.id and carritos[i]['remote_addr']]
+        carritos.pop(pos)
+        return jsonify({'message': 'ok'})
+
+
+
 
 
 @app.route('/productos', methods=['GET', 'POST'])
@@ -53,24 +67,27 @@ def manejar_productos():
             ret[i]['img'] = imagen2base64(os.path.join(rutaimagenes, ret[i]['imgname']))
 
         return jsonify(ret)
-    # elif request.method == 'POST':
-    #     # {
-    #     #     "title": "Lenovo Yoga",
-    #     #     "price": 5000,
-    #     #     "category": "Laptops",
-    #     #     "cantidad": 22,
-    #     #     'img': 'aduahdiuwhdiuawbadwc8yuhb3q'
-    #     # }
+    
+    
+@app.route('/pedido', methods=['POST'])
+def manejar_pedido(id=None):
+    if request.method == 'POST':
+        for j in range(len(carritos)):
+            for i in range(len(productos)):
+                if request.remote_addr == carritos[j]['remote_addr']:
+                    if carritos[j]['id'] == productos[i]['id']:
+                        if productos[i]['cantidad'] >= carritos[j]['cantidad']:
+                            productos[i]['cantidad'] -= carritos[j]['cantidad']
+                        else:
+                            raise ValueError()
 
-    #     data = request.get_json()
-    #     data['imgname'] = guardar_imagen_desde_base64(data['img'], ruta_destino=rutaimagenes + '')
 
-    #     productos.append({
+        pedidos.append({
+            'fecha': str(datetime.datetime.now()),
+            'carrito': [l for l in carritos if l['remote_addr'] == request.remote_addr]
+        })
 
-    #     })
-
-    #     productos.append(request.get_json())
-    #     return jsonify({'message': 'producto agregado con éxito'})
+        return jsonify({'message': 'ok'})
 
 
 if __name__ == '__main__':
